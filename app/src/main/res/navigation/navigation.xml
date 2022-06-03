@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/home"
+    android:id="@+id/navigation">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.rick.and.morty.HomeFragment"
+        android:label="fragment_home"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/openFromHomeCharacterDetail"
+            app:destination="@id/characterDetail"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/characterDetail"
+        android:name="com.rick.and.morty.CharacterDetailFragment"
+        android:label="fragment_character_detail"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        tools:layout="@layout/fragment_detail_character">
+
+        <argument
+            android:name="characterId"
+            app:argType="string"
+            app:nullable="false" />
+
+    </fragment>
+
+</navigation>
