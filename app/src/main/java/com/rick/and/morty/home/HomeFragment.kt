@@ -19,7 +19,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel.testFunction()
+        homeViewModel.getAllCharacters()
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 

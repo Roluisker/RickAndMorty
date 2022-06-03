@@ -1,4 +1,4 @@
-package com.rick.and.morty.detail_character
+package com.rick.and.morty.character_detail
 
 import com.rick.and.morty.R
 import com.rick.and.morty.core.BaseFragment
