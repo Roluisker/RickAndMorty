@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.rick.and.morty.HomeFragment"
+        android:name="com.rick.and.morty.home.HomeFragment"
         android:label="fragment_home"
         app:enterAnim="@android:anim/fade_in"
         app:exitAnim="@android:anim/fade_out"
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/characterDetail"
-        android:name="com.rick.and.morty.CharacterDetailFragment"
+        android:name="com.rick.and.morty.detail_character.CharacterDetailFragment"
         android:label="fragment_character_detail"
         app:enterAnim="@android:anim/fade_in"
         app:exitAnim="@android:anim/fade_out"

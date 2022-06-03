@@ -20,21 +20,24 @@ object Libs {
 
     }
 
+    object Hilt {
+        val hiltVersion = "2.38.1"
+        val android = "com.google.dagger:hilt-android:$hiltVersion"
+        val androidCompiler = "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    }
+
     object Google {
         const val material = "com.google.android.material:material:1.5.0"
         const val androidPlayCore = "com.google.android.play:core:1.10.3"
         const val androidPlayCoreKtx = "com.google.android.play:core-ktx:1.8.1"
     }
 
-
     object Test {
-
         const val junit = "junit:junit:4.13.2"
         const val espressoCore = "androidx.test.espresso:espresso-core:3.4.0"
 
         object Ext {
             const val junit = "androidx.test.ext:junit:1.1.3"
         }
-
     }
 }

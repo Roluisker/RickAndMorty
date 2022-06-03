@@ -3,6 +3,9 @@ import com.rick.and.morty.buildsrc.Libs
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -42,6 +45,8 @@ dependencies {
     implementation Libs.Google.androidPlayCoreKtx
     implementation Libs.AndroidX.Navigation.fragmentKtx
     implementation Libs.AndroidX.Navigation.uiKtx
+    implementation Libs.Hilt.android
+    kapt(Libs.Hilt.androidCompiler)
 
     testImplementation Libs.Test.junit
     androidTestImplementation Libs.Test.Ext.junit

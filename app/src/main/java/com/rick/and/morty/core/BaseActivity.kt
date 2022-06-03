@@ -1,4 +1,4 @@
-package com.rick.and.morty
+package com.rick.and.morty.core
 
 import androidx.appcompat.app.AppCompatActivity
 
