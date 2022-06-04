@@ -1,6 +1,5 @@
 package com.rick.and.morty.data
 
-import android.util.Log
 import com.rick.and.morty.data.model.CharactersModel
 import com.rick.and.morty.data.model.toCharacter
 import com.rick.and.morty.data.network.CharactersService
