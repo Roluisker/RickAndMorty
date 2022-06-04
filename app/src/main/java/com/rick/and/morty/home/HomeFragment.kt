@@ -36,7 +36,7 @@ class HomeFragment : BaseFragment(),
                 R.layout.fragment_home, container, false
             )
 
-        homeViewModel.getAllCharacters()
+        //homeViewModel.getAllCharacters()
 
         fragmentHomeBinding.lifecycleOwner = this
         return fragmentHomeBinding.root
@@ -62,6 +62,7 @@ class HomeFragment : BaseFragment(),
 
     override fun onTouchCharacter(holder: CharacterViewHolder) {
         holder?.binding?.character?.name?.let { Log.d("Aloha", it) }
+        navController()?.navigate(HomeFragmentDirections.openFromHomeCharacterDetail(holder.binding.character!!.id!!))
     }
 
     override fun onBottomReached() {

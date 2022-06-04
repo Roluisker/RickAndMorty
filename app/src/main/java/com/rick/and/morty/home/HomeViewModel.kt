@@ -1,5 +1,6 @@
 package com.rick.and.morty.home
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,10 +18,16 @@ class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCha
     private var currentPage = 1
     val characters = MutableLiveData<ArrayList<CharacterInformation>>()
 
+    init {
+        getAllCharacters()
+    }
+
     fun getAllCharacters() {
         viewModelScope.launch {
+            Log.d("Aloha", currentPage.toString())
             val charactersResult = getCharactersUseCase(currentPage)
             if (!charactersResult.isNullOrEmpty()) {
+                characters
                 characters.postValue(ArrayList(charactersResult))
                 currentPage++
             }
