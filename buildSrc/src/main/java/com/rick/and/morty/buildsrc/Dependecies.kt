@@ -26,6 +26,22 @@ object Libs {
         val androidCompiler = "com.google.dagger:hilt-android-compiler:$hiltVersion"
     }
 
+    object Network {
+        const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+        const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:2.9.0"
+    }
+
+    object Kotlinx {
+        const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
+    }
+
+    /*
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
+     */
+
     object Google {
         const val material = "com.google.android.material:material:1.5.0"
         const val androidPlayCore = "com.google.android.play:core:1.10.3"
