@@ -17,6 +17,7 @@ class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCha
 
     private var currentPage = 1
     val characters = MutableLiveData<ArrayList<CharacterInformation>>()
+    var chars = ArrayList<CharacterInformation>()
 
     init {
         getAllCharacters()
@@ -27,8 +28,8 @@ class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCha
             Log.d("Aloha", currentPage.toString())
             val charactersResult = getCharactersUseCase(currentPage)
             if (!charactersResult.isNullOrEmpty()) {
-                characters
-                characters.postValue(ArrayList(charactersResult))
+                chars.addAll(charactersResult)
+                characters.postValue(chars)
                 currentPage++
             }
         }

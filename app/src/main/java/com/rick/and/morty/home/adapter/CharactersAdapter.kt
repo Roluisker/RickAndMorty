@@ -16,7 +16,7 @@ class CharactersAdapter(
     private var characters: ArrayList<CharacterInformation> = ArrayList()
 
     fun addCharacters(characters: List<CharacterInformation>) {
-        //this.characters.clear()
+        this.characters.clear()
         this.characters.addAll(characters)
         notifyDataSetChanged()
     }
