@@ -12,8 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
 
-    private var _fragmentHomeBinding: FragmentHomeBinding? = null
-    private val fragmentHomeBinding get() = _fragmentHomeBinding!!
+    private lateinit var fragmentHomeBinding: FragmentHomeBinding
 
     private val homeViewModel: HomeViewModel by viewModels()
 
@@ -22,7 +21,7 @@ class HomeFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _fragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false)
+        fragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false)
         homeViewModel.getAllCharacters()
         return fragmentHomeBinding.root
     }

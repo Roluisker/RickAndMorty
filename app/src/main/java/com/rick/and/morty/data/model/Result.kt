@@ -18,5 +18,10 @@ data class Result(
 )
 
 fun Result.toCharacter(): CharacterInformation {
-    return CharacterInformation(id = id.toString(), name = name, imageUrl = image)
+    return CharacterInformation(
+        id = id.toString(),
+        name = name,
+        imageUrl = image,
+        species = species
+    )
 }
