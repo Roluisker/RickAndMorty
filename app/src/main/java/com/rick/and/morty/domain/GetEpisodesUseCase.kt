@@ -8,12 +8,11 @@ class GetEpisodesUseCase @Inject constructor(private val episodesRepository: Epi
 
     suspend operator fun invoke(episodesIds: List<String>): List<Episode> {
         val ids = StringBuilder()
-        val episodesSize = episodesIds.size - 1
 
         episodesIds.forEachIndexed { index, episode ->
             val items = episode.split("/")
             ids.append(items[5])
-            if (episodesSize != index) {
+            if (episodesIds.size - 1 != index) {
                 ids.append(",")
             }
         }
