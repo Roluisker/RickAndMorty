@@ -55,6 +55,8 @@ dependencies {
     implementation Libs.Hilt.android
     kapt(Libs.Hilt.androidCompiler)
 
+    implementation "com.google.android.material:material:1.4.0-rc01"
+
     implementation Libs.Network.retrofit
     implementation Libs.Network.retrofitConverterGson
     implementation Libs.Kotlinx.coroutinesAndroid

@@ -1,6 +1,7 @@
 package com.rick.and.morty
 
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import com.rick.and.morty.core.BaseActivity
 import com.rick.and.morty.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,9 +13,12 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        activityMainBinding.lifecycleOwner = this
+        /*
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         val view = activityMainBinding.root
-        setContentView(view)
+        setContentView(view)*/
     }
 
 }
