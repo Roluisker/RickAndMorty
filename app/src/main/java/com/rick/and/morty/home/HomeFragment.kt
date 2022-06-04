@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.rick.and.morty.R
 import com.rick.and.morty.core.BaseFragment
 import com.rick.and.morty.databinding.FragmentHomeBinding
@@ -30,7 +31,7 @@ class HomeFragment : BaseFragment(), CharactersAdapter.CharacterTouchListener<Ch
         )
 
         fragmentHomeBinding.characters.apply {
-            setHasFixedSize(true)
+            layoutManager = GridLayoutManager(context, 2)
             adapter = characterAdapter
         }
 
