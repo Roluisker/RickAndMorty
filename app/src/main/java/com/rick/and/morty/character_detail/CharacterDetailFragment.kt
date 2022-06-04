@@ -45,6 +45,7 @@ class CharacterDetailFragment : BaseFragment() {
         characterDetailViewModel.character.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
             Picasso.get()
                 .load(it.imageUrl)
+                .placeholder(R.drawable.place_holder)
                 .into(fragmentDetailCharacterBinding.thumbnail)
             fragmentDetailCharacterBinding.character = it
         }

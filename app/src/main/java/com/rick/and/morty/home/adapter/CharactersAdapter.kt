@@ -3,6 +3,7 @@ package com.rick.and.morty.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.rick.and.morty.R
 import com.rick.and.morty.databinding.CharacterListItemBinding
 import com.rick.and.morty.domain.model.CharacterInformation
 import com.squareup.picasso.Picasso
@@ -35,6 +36,7 @@ class CharactersAdapter(
             holder.binding.character = item
             Picasso.get()
                 .load(item.imageUrl)
+                .placeholder(R.drawable.place_holder)
                 .into(holder.binding.thumbnail)
         }
     }
