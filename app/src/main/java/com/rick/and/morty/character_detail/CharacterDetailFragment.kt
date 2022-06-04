@@ -1,7 +1,6 @@
 package com.rick.and.morty.character_detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.rick.and.morty.R
 import com.rick.and.morty.core.BaseFragment
 import com.rick.and.morty.databinding.FragmentDetailCharacterBinding
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,11 +35,23 @@ class CharacterDetailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        characterDetailViewModel.getCharacter(CharacterDetailFragmentArgs.fromBundle(requireArguments()).characterId)
-        Log.d(
-            "Aloha",
-            CharacterDetailFragmentArgs.fromBundle(requireArguments()).characterId.toString()
+
+        characterDetailViewModel.getCharacter(
+            CharacterDetailFragmentArgs.fromBundle(
+                requireArguments()
+            ).characterId
         )
+
+        characterDetailViewModel.character.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
+            Picasso.get()
+                .load(it.imageUrl)
+                .into(fragmentDetailCharacterBinding.thumbnail)
+            fragmentDetailCharacterBinding.character = it
+        }
+
+        characterDetailViewModel.isLoading.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
+            fragmentDetailCharacterBinding.isLoading = it
+        }
     }
 
 }

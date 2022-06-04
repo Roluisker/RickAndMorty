@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="isLoading"
+            type="Boolean" />
+
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,12 +18,12 @@
         tools:context="com.rick.and.morty.home.HomeFragment">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="50dp">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/citiesToolbar"
+                android:id="@+id/home_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@android:color/white"
@@ -25,7 +33,7 @@
                 app:layout_anchorGravity="center">
 
                 <TextView
-                    android:id="@+id/cityTitle"
+                    android:id="@+id/home_title"
                     style="@style/TextAppearance.AppCompat.Title"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -52,7 +60,7 @@
                 android:elevation="8dp"
                 android:indeterminate="true"
                 android:paddingBottom="2.6dp"
-                android:visibility="gone" />
+                app:isLoaderVisible="@{isLoading}" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

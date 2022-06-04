@@ -54,6 +54,10 @@ class HomeFragment : BaseFragment(),
             characterAdapter.addCharacters(it)
         }
 
+        homeViewModel.isLoading.observe(fragmentHomeBinding.lifecycleOwner!!) {
+            fragmentHomeBinding.isLoading = it
+        }
+
         fragmentHomeBinding.characters.addOnScrollListener(object :
             RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
