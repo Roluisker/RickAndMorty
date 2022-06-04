@@ -1,6 +1,5 @@
 package com.rick.and.morty.domain
 
-import androidx.lifecycle.LiveData
 import com.rick.and.morty.data.CharactersRepository
 import com.rick.and.morty.domain.model.CharacterInformation
 import javax.inject.Inject

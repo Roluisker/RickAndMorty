@@ -19,4 +19,9 @@ class CharactersRepository @Inject constructor(private val api: CharactersServic
         return characters
     }
 
+    suspend fun getCharacterFromApi(characterId: Int): CharacterInformation? {
+        val character = api.getCharacter(characterId)
+        return character?.toCharacter() ?: null
+    }
+
 }
