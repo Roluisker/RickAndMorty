@@ -1,6 +1,7 @@
 package com.rick.and.morty.character_detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +50,10 @@ class CharacterDetailFragment : BaseFragment() {
                 .placeholder(R.drawable.place_holder)
                 .into(fragmentDetailCharacterBinding.thumbnail)
             fragmentDetailCharacterBinding.character = it
+        }
+
+        characterDetailViewModel.episodes.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
+            Log.d("Aloha", it.toString())
         }
 
         characterDetailViewModel.isLoading.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {

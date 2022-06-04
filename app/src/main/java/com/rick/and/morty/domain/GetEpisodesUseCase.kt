@@ -7,7 +7,18 @@ import javax.inject.Inject
 class GetEpisodesUseCase @Inject constructor(private val episodesRepository: EpisodesRepository) {
 
     suspend operator fun invoke(episodesIds: List<String>): List<Episode> {
-        return episodesRepository.getEpisodesFromApi("1,2")
+        val ids = StringBuilder()
+        val episodesSize = episodesIds.size - 1
+
+        episodesIds.forEachIndexed { index, episode ->
+            val items = episode.split("/")
+            ids.append(items[5])
+            if (episodesSize != index) {
+                ids.append(",")
+            }
+        }
+
+        return episodesRepository.getEpisodesFromApi(ids.toString())
     }
 
 }
