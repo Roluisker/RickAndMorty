@@ -8,8 +8,7 @@ import com.rick.and.morty.domain.model.CharacterInformation
 import com.squareup.picasso.Picasso
 
 class CharactersAdapter(
-    private val itemClickListenerOn: OnCharacterTouchListener<CharacterViewHolder>,
-    private var onBottomReachedListener: OnBottomReachedListener
+    private val itemClickListenerOn: OnCharacterTouchListener
 ) :
     RecyclerView.Adapter<CharacterViewHolder>() {
 
@@ -30,10 +29,6 @@ class CharactersAdapter(
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        if (position == characters.size - 1) {
-            onBottomReachedListener.onBottomReached()
-        }
-
         val item = getItem(position)
 
         if (item != null) {
@@ -53,11 +48,7 @@ class CharactersAdapter(
 
     override fun getItemCount(): Int = characters.size
 
-    interface OnCharacterTouchListener<CharacterViewHolder> {
-        fun onTouchCharacter(holder: CharacterViewHolder)
-    }
-
-    interface OnBottomReachedListener {
-        fun onBottomReached()
+    interface OnCharacterTouchListener {
+        fun onTouchCharacter(character: CharacterInformation?)
     }
 }

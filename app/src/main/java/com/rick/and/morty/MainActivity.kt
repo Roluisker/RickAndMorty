@@ -15,10 +15,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         activityMainBinding.lifecycleOwner = this
-        /*
-        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        val view = activityMainBinding.root
-        setContentView(view)*/
     }
 
 }
