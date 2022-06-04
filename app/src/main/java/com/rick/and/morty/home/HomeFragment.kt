@@ -16,7 +16,9 @@ import com.rick.and.morty.home.adapter.CharactersAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment(), CharactersAdapter.CharacterTouchListener<CharacterViewHolder> {
+class HomeFragment : BaseFragment(),
+    CharactersAdapter.OnCharacterTouchListener<CharacterViewHolder>,
+    CharactersAdapter.OnBottomReachedListener {
 
     private lateinit var fragmentHomeBinding: FragmentHomeBinding
     private lateinit var characterAdapter: CharactersAdapter
@@ -27,7 +29,8 @@ class HomeFragment : BaseFragment(), CharactersAdapter.CharacterTouchListener<Ch
         super.onViewCreated(view, savedInstanceState)
 
         characterAdapter = CharactersAdapter(
-            this@HomeFragment
+            this,
+            this
         )
 
         fragmentHomeBinding.characters.apply {
@@ -59,6 +62,10 @@ class HomeFragment : BaseFragment(), CharactersAdapter.CharacterTouchListener<Ch
 
     override fun onTouchCharacter(holder: CharacterViewHolder) {
         holder?.binding?.character?.name?.let { Log.d("Aloha", it) }
+    }
+
+    override fun onBottomReached() {
+        Log.d("Aloha", "bottom")
     }
 
 }

@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rick.and.morty.databinding.CharacterListItemBinding
 import com.rick.and.morty.domain.model.CharacterInformation
 import com.squareup.picasso.Picasso
-import java.util.ArrayList
 
-class CharactersAdapter(private val itemClickListener: CharacterTouchListener<CharacterViewHolder>) :
+class CharactersAdapter(
+    private val itemClickListenerOn: OnCharacterTouchListener<CharacterViewHolder>,
+    private var onBottomReachedListener: OnBottomReachedListener
+) :
     RecyclerView.Adapter<CharacterViewHolder>() {
 
     private var characters: ArrayList<CharacterInformation> = ArrayList()
@@ -22,12 +24,17 @@ class CharactersAdapter(private val itemClickListener: CharacterTouchListener<Ch
         val inflater = LayoutInflater.from(parent.context)
         val binding = CharacterListItemBinding.inflate(inflater, parent, false)
         val holder = CharacterViewHolder(binding)
-        holder.itemClickListener = itemClickListener
+        holder.itemClickListenerOn = itemClickListenerOn
         return holder
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
+        if (position == characters.size - 1) {
+            onBottomReachedListener.onBottomReached()
+        }
+
         val item = getItem(position)
+
         if (item != null) {
             holder.binding.character = item
             Picasso.get()
@@ -45,7 +52,11 @@ class CharactersAdapter(private val itemClickListener: CharacterTouchListener<Ch
 
     override fun getItemCount(): Int = characters.size
 
-    interface CharacterTouchListener<CharacterViewHolder> {
+    interface OnCharacterTouchListener<CharacterViewHolder> {
         fun onTouchCharacter(holder: CharacterViewHolder)
+    }
+
+    interface OnBottomReachedListener {
+        fun onBottomReached()
     }
 }

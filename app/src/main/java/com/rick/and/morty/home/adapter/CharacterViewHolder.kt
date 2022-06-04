@@ -7,14 +7,14 @@ import com.rick.and.morty.databinding.CharacterListItemBinding
 class CharacterViewHolder(val binding: CharacterListItemBinding) :
     BaseOnClickViewHolder(binding.root) {
 
-    var itemClickListener: CharactersAdapter.CharacterTouchListener<CharacterViewHolder>? = null
+    var itemClickListenerOn: CharactersAdapter.OnCharacterTouchListener<CharacterViewHolder>? = null
 
     init {
         binding.root.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
-        itemClickListener?.onTouchCharacter(this)
+        itemClickListenerOn?.onTouchCharacter(this)
     }
     
 }
