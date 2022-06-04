@@ -34,7 +34,7 @@ object Libs {
     object Kotlinx {
         const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
     }
-    
+
     object Google {
         const val material = "com.google.android.material:material:1.5.0"
         const val androidPlayCore = "com.google.android.play:core:1.10.3"
