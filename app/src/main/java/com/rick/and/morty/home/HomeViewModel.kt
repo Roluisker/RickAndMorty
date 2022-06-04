@@ -1,7 +1,5 @@
 package com.rick.and.morty.home
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,8 +20,6 @@ class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCha
         viewModelScope.launch {
             val charactersResult = getCharactersUseCase()
             characters.postValue(ArrayList(charactersResult))
-
-            Log.d("Aloha", charactersResult[0].name)
         }
     }
 

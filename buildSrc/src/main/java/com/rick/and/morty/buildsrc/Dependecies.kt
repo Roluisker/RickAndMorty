@@ -35,6 +35,11 @@ object Libs {
         const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
     }
 
+    object Ui {
+        const val material = "com.google.android.material:material:1.4.0-rc01"
+        const val picasso = "com.squareup.picasso:picasso:2.8"
+    }
+
     object Google {
         const val material = "com.google.android.material:material:1.5.0"
         const val androidPlayCore = "com.google.android.play:core:1.10.3"

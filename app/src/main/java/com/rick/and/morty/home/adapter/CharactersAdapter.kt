@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rick.and.morty.databinding.CharacterListItemBinding
 import com.rick.and.morty.domain.model.CharacterInformation
+import com.squareup.picasso.Picasso
 import java.util.ArrayList
 
 class CharactersAdapter(private val itemClickListener: CharacterTouchListener<CharacterViewHolder>) :
@@ -29,6 +30,9 @@ class CharactersAdapter(private val itemClickListener: CharacterTouchListener<Ch
         val item = getItem(position)
         if (item != null) {
             holder.binding.character = item
+            Picasso.get()
+                .load(item.imageUrl)
+                .into(holder.binding.thumbnail)
         }
     }
 
