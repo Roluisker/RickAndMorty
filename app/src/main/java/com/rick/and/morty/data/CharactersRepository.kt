@@ -8,8 +8,8 @@ import javax.inject.Inject
 
 class CharactersRepository @Inject constructor(private val api: CharactersService) {
 
-    suspend fun getCharactersFromApi(): List<CharacterInformation> {
-        val charactersModel: CharactersModel? = api.getCharacters()
+    suspend fun getCharactersFromApi(page: Int): List<CharacterInformation> {
+        val charactersModel: CharactersModel? = api.getCharacters(page)
         val characters = mutableListOf<CharacterInformation>()
 
         charactersModel?.results?.forEach { it ->

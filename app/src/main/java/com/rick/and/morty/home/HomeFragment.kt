@@ -25,6 +25,23 @@ class HomeFragment : BaseFragment(),
 
     private val homeViewModel: HomeViewModel by viewModels()
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        fragmentHomeBinding =
+            DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_home, container, false
+            )
+
+        homeViewModel.getAllCharacters()
+
+        fragmentHomeBinding.lifecycleOwner = this
+        return fragmentHomeBinding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -41,23 +58,6 @@ class HomeFragment : BaseFragment(),
         homeViewModel.characters.observe(fragmentHomeBinding.lifecycleOwner!!) {
             characterAdapter.addCharacters(it)
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        fragmentHomeBinding =
-            DataBindingUtil.inflate(
-                inflater,
-                R.layout.fragment_home, container, false
-            )
-
-        homeViewModel.getAllCharacters()
-
-        fragmentHomeBinding.lifecycleOwner = this
-        return fragmentHomeBinding.root
     }
 
     override fun onTouchCharacter(holder: CharacterViewHolder) {

@@ -7,9 +7,9 @@ import javax.inject.Inject
 
 class CharactersService @Inject constructor(private val api: RickAndMortyApiClient) {
     
-    suspend fun getCharacters(): CharactersModel? {
+    suspend fun getCharacters(page: Int): CharactersModel? {
         return withContext(Dispatchers.IO) {
-            val response = api.getAllCharacters()
+            val response = api.getAllCharacters(page)
             response.body() ?: null
         }
     }

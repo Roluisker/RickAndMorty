@@ -16,9 +16,9 @@ class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCha
 
     val characters = MutableLiveData<ArrayList<CharacterInformation>>()
 
-    fun getAllCharacters() {
+    fun getAllCharacters(page: Int = 1) {
         viewModelScope.launch {
-            val charactersResult = getCharactersUseCase()
+            val charactersResult = getCharactersUseCase(page)
             characters.postValue(ArrayList(charactersResult))
         }
     }
