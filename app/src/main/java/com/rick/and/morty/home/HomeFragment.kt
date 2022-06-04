@@ -65,7 +65,7 @@ class HomeFragment : BaseFragment(),
     }
 
     override fun onBottomReached() {
-        Log.d("Aloha", "bottom")
+        homeViewModel.getAllCharacters()
     }
 
 }

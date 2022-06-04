@@ -14,12 +14,16 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCharactersUseCase) :
     ViewModel() {
 
+    private var currentPage = 1
     val characters = MutableLiveData<ArrayList<CharacterInformation>>()
 
-    fun getAllCharacters(page: Int = 1) {
+    fun getAllCharacters() {
         viewModelScope.launch {
-            val charactersResult = getCharactersUseCase(page)
-            characters.postValue(ArrayList(charactersResult))
+            val charactersResult = getCharactersUseCase(currentPage)
+            if (!charactersResult.isNullOrEmpty()) {
+                characters.postValue(ArrayList(charactersResult))
+                currentPage++
+            }
         }
     }
 

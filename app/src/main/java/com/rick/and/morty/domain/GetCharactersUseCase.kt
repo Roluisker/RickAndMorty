@@ -7,7 +7,13 @@ import javax.inject.Inject
 class GetCharactersUseCase @Inject constructor(private val charactersRepository: CharactersRepository) {
 
     suspend operator fun invoke(page: Int) : List<CharacterInformation>  {
-        return charactersRepository.getCharactersFromApi(page)
+        val charactersResult = charactersRepository.getCharactersFromApi(page)
+
+        return if(!charactersResult.isNullOrEmpty()) {
+            charactersResult
+        } else {
+            emptyList()
+        }
     }
 
 }
