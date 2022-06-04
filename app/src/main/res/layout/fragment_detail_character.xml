@@ -7,7 +7,7 @@
 
         <variable
             name="character"
-            type="com.rick.and.morty.domain.model.CharacterInformation" />
+            type="com.rick.and.morty.domain.model.character.CharacterInformation" />
 
         <variable
             name="isLoading"

@@ -1,12 +1,12 @@
 package com.rick.and.morty.data
 
-import com.rick.and.morty.data.model.CharactersModel
-import com.rick.and.morty.data.model.toCharacter
-import com.rick.and.morty.data.network.CharactersService
-import com.rick.and.morty.domain.model.CharacterInformation
+import com.rick.and.morty.data.model.characters.CharactersModel
+import com.rick.and.morty.data.model.characters.toCharacter
+import com.rick.and.morty.data.network.CharacterService
+import com.rick.and.morty.domain.model.character.CharacterInformation
 import javax.inject.Inject
 
-class CharactersRepository @Inject constructor(private val api: CharactersService) {
+class CharactersRepository @Inject constructor(private val api: CharacterService) {
 
     suspend fun getCharactersFromApi(page: Int): List<CharacterInformation> {
         val charactersModel: CharactersModel? = api.getCharacters(page)

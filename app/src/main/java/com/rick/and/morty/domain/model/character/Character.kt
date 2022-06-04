@@ -1,4 +1,4 @@
-package com.rick.and.morty.domain.model
+package com.rick.and.morty.domain.model.character
 
 // The name avoid generate conflicts with the class called Character in Java
 data class CharacterInformation(
@@ -8,7 +8,7 @@ data class CharacterInformation(
     val species: String,
     val status: String,
     val gender: String,
-    val episode: List<String>
+    val episodes: List<String>
 )
 
 

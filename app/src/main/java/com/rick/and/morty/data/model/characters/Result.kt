@@ -1,6 +1,6 @@
-package com.rick.and.morty.data.model
+package com.rick.and.morty.data.model.characters
 
-import com.rick.and.morty.domain.model.CharacterInformation
+import com.rick.and.morty.domain.model.character.CharacterInformation
 
 data class Result(
     val created: String,
@@ -25,6 +25,6 @@ fun Result.toCharacter(): CharacterInformation {
         species = species,
         status = status,
         gender = gender,
-        episode = episode
+        episodes = episode
     )
 }

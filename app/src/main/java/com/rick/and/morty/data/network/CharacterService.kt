@@ -1,12 +1,12 @@
 package com.rick.and.morty.data.network
 
-import com.rick.and.morty.data.model.CharactersModel
-import com.rick.and.morty.data.model.Result
+import com.rick.and.morty.data.model.characters.CharactersModel
+import com.rick.and.morty.data.model.characters.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class CharactersService @Inject constructor(private val api: RickAndMortyApiClient) {
+class CharacterService @Inject constructor(private val api: RickAndMortyApiClient) {
 
     suspend fun getCharacters(page: Int): CharactersModel? {
         return withContext(Dispatchers.IO) {

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rick.and.morty.R
 import com.rick.and.morty.databinding.CharacterListItemBinding
-import com.rick.and.morty.domain.model.CharacterInformation
+import com.rick.and.morty.domain.model.character.CharacterInformation
 import com.squareup.picasso.Picasso
 
 class CharactersAdapter(

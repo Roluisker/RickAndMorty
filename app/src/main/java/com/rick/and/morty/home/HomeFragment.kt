@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rick.and.morty.R
 import com.rick.and.morty.core.BaseFragment
 import com.rick.and.morty.databinding.FragmentHomeBinding
-import com.rick.and.morty.domain.model.CharacterInformation
+import com.rick.and.morty.domain.model.character.CharacterInformation
 import com.rick.and.morty.home.adapter.CharactersAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
