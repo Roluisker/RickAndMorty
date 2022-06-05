@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rick.and.morty.domain.GetCharacterUseCase
+import com.rick.and.morty.domain.GetEpisodeUseCase
 import com.rick.and.morty.domain.GetEpisodesUseCase
 import com.rick.and.morty.domain.model.character.CharacterInformation
 import com.rick.and.morty.domain.model.episode.Episode
@@ -16,7 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class CharacterDetailViewModel @Inject constructor(
     private val getCharacterUseCase: GetCharacterUseCase,
-    private val getEpisodesUseCase: GetEpisodesUseCase
+    private val getEpisodesUseCase: GetEpisodesUseCase,
+    private val getEpisodeUseCase: GetEpisodeUseCase
 ) :
     ViewModel() {
 
@@ -41,7 +43,33 @@ class CharacterDetailViewModel @Inject constructor(
         }
     }
 
-    fun getEpisodes(episodesIdes: List<String>) {
+    fun getEpisodes(episodesUrls: List<String>) {
+        when {
+            episodesUrls.size > 1 -> {
+                launchEpisodes(episodesUrls)
+            }
+            episodesUrls.size == 1 -> {
+                launchEpisode(episodesUrls[0])
+            }
+        }
+    }
+
+    private fun launchEpisode(episodeUrl: String) {
+        isLoading.postValue(true)
+        viewModelScope.launch {
+            val episode = getEpisodeUseCase(episodeUrl)
+
+            episode?.let {
+                currentEpisodes.add(it)
+                episodes.postValue(currentEpisodes)
+            } ?: run {
+                Log.d("Aloha", "null")
+            }
+            isLoading.postValue(false)
+        }
+    }
+
+    private fun launchEpisodes(episodesIdes: List<String>) {
         isLoading.postValue(true)
         viewModelScope.launch {
             val episodesResult = getEpisodesUseCase(episodesIdes)

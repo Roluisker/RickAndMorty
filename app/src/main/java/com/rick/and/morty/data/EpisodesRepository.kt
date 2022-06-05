@@ -1,5 +1,6 @@
 package com.rick.and.morty.data
 
+import com.rick.and.morty.data.model.episodes.EpisodesItem
 import com.rick.and.morty.data.model.episodes.EpisodesModel
 import com.rick.and.morty.data.model.episodes.toEpisode
 import com.rick.and.morty.data.network.EpisodesService
@@ -17,6 +18,11 @@ class EpisodesRepository @Inject constructor(private val api: EpisodesService) {
         }
 
         return episodes
+    }
+
+    suspend fun getEpisodeFromApi(episodeId: String): Episode? {
+        val episodeModel: EpisodesItem? = api.getEpisode(episodeId)
+        return episodeModel?.toEpisode() ?: null
     }
 
 }

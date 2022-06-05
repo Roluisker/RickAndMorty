@@ -2,6 +2,7 @@ package com.rick.and.morty.data.network
 
 import com.rick.and.morty.data.model.characters.CharactersModel
 import com.rick.and.morty.data.model.characters.Result
+import com.rick.and.morty.data.model.episodes.EpisodesItem
 import com.rick.and.morty.data.model.episodes.EpisodesModel
 import retrofit2.Response
 import retrofit2.http.GET
@@ -17,4 +18,7 @@ interface RickAndMortyApiClient {
 
     @GET("episode/{ids}")
     suspend fun getEpisodes(@Path("ids") episodesIds: String): Response<EpisodesModel>
+
+    @GET("episode/{id}")
+    suspend fun getEpisode(@Path("id") id: String): Response<EpisodesItem>
 }

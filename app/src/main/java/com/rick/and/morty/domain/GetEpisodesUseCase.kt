@@ -6,13 +6,13 @@ import javax.inject.Inject
 
 class GetEpisodesUseCase @Inject constructor(private val episodesRepository: EpisodesRepository) {
 
-    suspend operator fun invoke(episodesIds: List<String>): List<Episode> {
+    suspend operator fun invoke(episodesUrls: List<String>): List<Episode> {
         val ids = StringBuilder()
 
-        episodesIds.forEachIndexed { index, episode ->
+        episodesUrls.forEachIndexed { index, episode ->
             val items = episode.split("/")
             ids.append(items[5])
-            if (episodesIds.size - 1 != index) {
+            if (episodesUrls.size - 1 != index) {
                 ids.append(",")
             }
         }
