@@ -11,7 +11,7 @@ import com.rick.and.morty.R
 import com.rick.and.morty.character_detail.adapter.EpisodesAdapter
 import com.rick.and.morty.core.BaseFragment
 import com.rick.and.morty.databinding.FragmentDetailCharacterBinding
-import com.rick.and.morty.home.HomeFragmentDirections
+import com.rick.and.morty.domain.model.character.CharacterInformation
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +20,7 @@ class CharacterDetailFragment : BaseFragment() {
 
     private lateinit var fragmentDetailCharacterBinding: FragmentDetailCharacterBinding
     private lateinit var episodesAdapter: EpisodesAdapter
+    private lateinit var currentCharacter: CharacterInformation
     private val characterDetailViewModel: CharacterDetailViewModel by viewModels()
 
     override fun onCreateView(
@@ -58,12 +59,13 @@ class CharacterDetailFragment : BaseFragment() {
         )
 
         characterDetailViewModel.character.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
-            characterDetailViewModel.getEpisodes(it.episodes)
+            currentCharacter = it
+            characterDetailViewModel.getEpisodes(currentCharacter.episodes)
             Picasso.get()
-                .load(it.imageUrl)
+                .load(currentCharacter.imageUrl)
                 .placeholder(R.drawable.place_holder)
                 .into(fragmentDetailCharacterBinding.thumbnail)
-            fragmentDetailCharacterBinding.character = it
+            fragmentDetailCharacterBinding.character = currentCharacter
         }
 
         characterDetailViewModel.isLoading.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
@@ -79,7 +81,8 @@ class CharacterDetailFragment : BaseFragment() {
                 CharacterDetailFragmentDirections.goToCharacterVideo(
                     getString(
                         R.string.default_character_video
-                    )
+                    ),
+                    currentCharacter.name
                 )
             )
         }

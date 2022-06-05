@@ -40,6 +40,12 @@ class CharacterVideoFragment : BaseFragment() {
         return fragmentCharacterVideoBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fragmentCharacterVideoBinding.characterName =
+            CharacterVideoFragmentArgs.fromBundle(requireArguments()).characterName
+    }
+
     private fun initializePlayer() {
         player = ExoPlayer.Builder(requireContext())
             .build()

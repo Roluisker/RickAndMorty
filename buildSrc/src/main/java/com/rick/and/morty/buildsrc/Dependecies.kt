@@ -46,9 +46,29 @@ object Libs {
         const val androidPlayCoreKtx = "com.google.android.play:core-ktx:1.8.1"
     }
 
+    object Exoplayer {
+        val media3Version = "1.0.0-alpha03"
+        val exoPlayer = "androidx.media3:media3-exoplayer:$media3Version"
+        val media3Ui = "androidx.media3:media3-ui:$media3Version"
+        val exoplayerDash = "androidx.media3:media3-exoplayer-dash:$media3Version"
+    }
+
+    /*
+    implementation "androidx.media3:media3-exoplayer:1.0.0-alpha03"
+    implementation "androidx.media3:media3-ui:1.0.0-alpha03"
+    implementation "androidx.media3:media3-exoplayer-dash:1.0.0-alpha03"
+
+    testImplementation "io.mockk:mockk:1.12.2"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+     */
+
     object Test {
         const val junit = "junit:junit:4.13.2"
         const val espressoCore = "androidx.test.espresso:espresso-core:3.4.0"
+        const val ioMockk = "io.mockk:mockk:1.12.2"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0"
+        const val coreTesting = "androidx.arch.core:core-testing:2.1.0"
 
         object Ext {
             const val junit = "androidx.test.ext:junit:1.1.3"

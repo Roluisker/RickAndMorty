@@ -61,6 +61,11 @@
             app:argType="string"
             app:nullable="false" />
 
+        <argument
+            android:name="characterName"
+            app:argType="string"
+            app:nullable="false" />
+
     </fragment>
 
 </navigation>
