@@ -39,7 +39,7 @@ class GetCharactersUseCaseTest {
     }
 
     @Test
-    fun `when repository request characters from api and response is empty`() = runBlocking {
+    fun `when repository request characters from api and the response is empty`() = runBlocking {
         val myList = emptyList<CharacterInformation>()
         val currentPage = 1
 
