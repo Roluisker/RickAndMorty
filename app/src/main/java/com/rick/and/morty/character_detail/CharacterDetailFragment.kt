@@ -68,6 +68,10 @@ class CharacterDetailFragment : BaseFragment() {
         characterDetailViewModel.isLoading.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
             fragmentDetailCharacterBinding.isLoading = it
         }
+
+        characterDetailViewModel.isDataDisplayable.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
+            fragmentDetailCharacterBinding.isDataDisplayable = it
+        }
     }
 
 }

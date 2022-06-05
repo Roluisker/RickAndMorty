@@ -28,6 +28,7 @@ class CharacterDetailViewModel @Inject constructor(
     val episodes = MutableLiveData<ArrayList<Episode>>()
 
     val isLoading = MutableLiveData(false)
+    val isDataDisplayable = MutableLiveData(false)
 
     fun getCharacter(characterId: Int) {
         isLoading.postValue(true)
@@ -66,6 +67,7 @@ class CharacterDetailViewModel @Inject constructor(
                 Log.d("Aloha", "null")
             }
             isLoading.postValue(false)
+            isDataDisplayable.postValue(true)
         }
     }
 
@@ -79,6 +81,7 @@ class CharacterDetailViewModel @Inject constructor(
                 episodes.postValue(currentEpisodes)
             }
             isLoading.postValue(false)
+            isDataDisplayable.postValue(true)
         }
     }
 

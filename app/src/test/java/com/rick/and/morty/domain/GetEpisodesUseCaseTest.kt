@@ -1,7 +1,6 @@
 package com.rick.and.morty.domain
 
 import com.rick.and.morty.data.EpisodesRepository
-import com.rick.and.morty.domain.model.character.CharacterInformation
 import com.rick.and.morty.domain.model.episode.Episode
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
