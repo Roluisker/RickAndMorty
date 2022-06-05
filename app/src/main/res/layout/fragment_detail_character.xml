@@ -96,7 +96,6 @@
 
                     <TextView
                         android:id="@+id/character_gender"
-                        style="@style/TextAppearance.AppCompat.Title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -112,7 +111,6 @@
 
                     <TextView
                         android:id="@+id/character_status"
-                        style="@style/TextAppearance.AppCompat.Title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"

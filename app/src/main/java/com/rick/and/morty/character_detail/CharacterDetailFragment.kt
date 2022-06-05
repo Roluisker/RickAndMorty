@@ -1,13 +1,14 @@
 package com.rick.and.morty.character_detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.rick.and.morty.R
+import com.rick.and.morty.character_detail.adapter.EpisodesAdapter
 import com.rick.and.morty.core.BaseFragment
 import com.rick.and.morty.databinding.FragmentDetailCharacterBinding
 import com.squareup.picasso.Picasso
@@ -17,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class CharacterDetailFragment : BaseFragment() {
 
     private lateinit var fragmentDetailCharacterBinding: FragmentDetailCharacterBinding
+    private lateinit var episodesAdapter: EpisodesAdapter
     private val characterDetailViewModel: CharacterDetailViewModel by viewModels()
 
     override fun onCreateView(
@@ -37,6 +39,17 @@ class CharacterDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        episodesAdapter = EpisodesAdapter()
+
+        fragmentDetailCharacterBinding.episodes.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = episodesAdapter
+        }
+
+        characterDetailViewModel.episodes.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
+            episodesAdapter.addEpisodes(it)
+        }
+
         characterDetailViewModel.getCharacter(
             CharacterDetailFragmentArgs.fromBundle(
                 requireArguments()
@@ -50,10 +63,6 @@ class CharacterDetailFragment : BaseFragment() {
                 .placeholder(R.drawable.place_holder)
                 .into(fragmentDetailCharacterBinding.thumbnail)
             fragmentDetailCharacterBinding.character = it
-        }
-
-        characterDetailViewModel.episodes.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
-            Log.d("Aloha", it.toString())
         }
 
         characterDetailViewModel.isLoading.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
