@@ -1,11 +1,17 @@
 package com.rick.and.morty.character_detail
 
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rick.and.morty.R
 import com.rick.and.morty.character_detail.adapter.EpisodesAdapter
@@ -48,7 +54,7 @@ class CharacterDetailFragment : BaseFragment() {
             adapter = episodesAdapter
         }
 
-        characterDetailViewModel.episodes.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
+        characterDetailViewModel.episodes.observe(lifecycleOwnerOwner()) {
             episodesAdapter.addEpisodes(it)
         }
 
@@ -58,7 +64,7 @@ class CharacterDetailFragment : BaseFragment() {
             ).characterId
         )
 
-        characterDetailViewModel.character.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
+        characterDetailViewModel.character.observe(lifecycleOwnerOwner()) {
             currentCharacter = it
             characterDetailViewModel.getEpisodes(currentCharacter.episodes)
             Picasso.get()
@@ -68,11 +74,11 @@ class CharacterDetailFragment : BaseFragment() {
             fragmentDetailCharacterBinding.character = currentCharacter
         }
 
-        characterDetailViewModel.isLoading.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
+        characterDetailViewModel.isLoading.observe(lifecycleOwnerOwner()) {
             fragmentDetailCharacterBinding.isLoading = it
         }
 
-        characterDetailViewModel.isDataDisplayable.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
+        characterDetailViewModel.isDataDisplayable.observe(lifecycleOwnerOwner()) {
             fragmentDetailCharacterBinding.isDataDisplayable = it
         }
 
@@ -87,5 +93,16 @@ class CharacterDetailFragment : BaseFragment() {
             )
         }
     }
+
+    override fun onNetworkChange(isNetworkAvailable: Boolean) {
+        if (isNetworkAvailable) {
+
+        } else {
+
+        }
+    }
+
+    override fun lifecycleOwnerOwner(): LifecycleOwner =
+        fragmentDetailCharacterBinding.lifecycleOwner!!
 
 }

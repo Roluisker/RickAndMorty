@@ -20,7 +20,7 @@ class HomeViewModel @Inject constructor(private val getCharactersUseCase: GetCha
     val isLoading = MutableLiveData(false)
 
     init {
-        getAllCharacters()
+        //getAllCharacters()
     }
 
     fun getAllCharacters() {

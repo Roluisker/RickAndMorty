@@ -3,6 +3,7 @@ package com.rick.and.morty.character_video
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LifecycleOwner
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.Util
 import androidx.media3.exoplayer.ExoPlayer
@@ -119,5 +121,16 @@ class CharacterVideoFragment : BaseFragment() {
             releasePlayer()
         }
     }
+
+    override fun onNetworkChange(isNetworkAvailable: Boolean) {
+        if (isNetworkAvailable) {
+
+        } else {
+
+        }
+    }
+
+    override fun lifecycleOwnerOwner(): LifecycleOwner =
+        fragmentCharacterVideoBinding.lifecycleOwner!!
 
 }

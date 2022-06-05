@@ -1,11 +1,13 @@
 package com.rick.and.morty.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rick.and.morty.R
@@ -50,11 +52,11 @@ class HomeFragment : BaseFragment(),
             adapter = characterAdapter
         }
 
-        homeViewModel.characters.observe(fragmentHomeBinding.lifecycleOwner!!) {
+        homeViewModel.characters.observe(lifecycleOwnerOwner()) {
             characterAdapter.addCharacters(it)
         }
 
-        homeViewModel.isLoading.observe(fragmentHomeBinding.lifecycleOwner!!) {
+        homeViewModel.isLoading.observe(lifecycleOwnerOwner()) {
             fragmentHomeBinding.isLoading = it
         }
 
@@ -69,10 +71,20 @@ class HomeFragment : BaseFragment(),
         })
     }
 
+    override fun onNetworkChange(isNetworkAvailable: Boolean) {
+        if (isNetworkAvailable) {
+            homeViewModel.getAllCharacters()
+        } else {
+            Log.d("Aloha", "no internet")
+        }
+    }
+
     override fun onTouchCharacter(character: CharacterInformation?) {
         character?.let {
             navController()?.navigate(HomeFragmentDirections.goToHomeCharacterDetail(it.id))
         }
     }
+
+    override fun lifecycleOwnerOwner(): LifecycleOwner = fragmentHomeBinding.lifecycleOwner!!
 
 }
