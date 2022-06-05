@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/home"
-    android:id="@+id/navigation">
+    android:id="@+id/navigation"
+    app:startDestination="@id/home">
 
     <fragment
         android:id="@+id/home"
@@ -14,7 +14,7 @@
         tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/openFromHomeCharacterDetail"
+            android:id="@+id/goToHomeCharacterDetail"
             app:destination="@id/characterDetail"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
@@ -32,9 +32,33 @@
         app:exitAnim="@android:anim/fade_out"
         tools:layout="@layout/fragment_detail_character">
 
+        <action
+            android:id="@+id/goToCharacterVideo"
+            app:destination="@id/characterVideo"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpToInclusive="true" />
+
         <argument
             android:name="characterId"
             app:argType="integer"
+            app:nullable="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/characterVideo"
+        android:name="com.rick.and.morty.character_video.CharacterVideoFragment"
+        android:label="fragment_character_video"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        tools:layout="@layout/fragment_character_video">
+
+        <argument
+            android:name="videoUrl"
+            app:argType="string"
             app:nullable="false" />
 
     </fragment>

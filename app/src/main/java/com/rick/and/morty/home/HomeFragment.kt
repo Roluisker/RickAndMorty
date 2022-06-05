@@ -71,7 +71,7 @@ class HomeFragment : BaseFragment(),
 
     override fun onTouchCharacter(character: CharacterInformation?) {
         character?.let {
-            navController()?.navigate(HomeFragmentDirections.openFromHomeCharacterDetail(it.id))
+            navController()?.navigate(HomeFragmentDirections.goToHomeCharacterDetail(it.id))
         }
     }
 

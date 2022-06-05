@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RickAndMorty</string>
+    <string name="default_character_video">https://storage.googleapis.com/exoplayer-test-media-0/Jazz_In_Paris.mp3</string>
 </resources>

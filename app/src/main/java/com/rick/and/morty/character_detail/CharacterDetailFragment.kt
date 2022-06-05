@@ -11,6 +11,7 @@ import com.rick.and.morty.R
 import com.rick.and.morty.character_detail.adapter.EpisodesAdapter
 import com.rick.and.morty.core.BaseFragment
 import com.rick.and.morty.databinding.FragmentDetailCharacterBinding
+import com.rick.and.morty.home.HomeFragmentDirections
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -71,6 +72,16 @@ class CharacterDetailFragment : BaseFragment() {
 
         characterDetailViewModel.isDataDisplayable.observe(fragmentDetailCharacterBinding.lifecycleOwner!!) {
             fragmentDetailCharacterBinding.isDataDisplayable = it
+        }
+
+        fragmentDetailCharacterBinding.characterVideoButton.setOnClickListener {
+            navController()?.navigate(
+                CharacterDetailFragmentDirections.goToCharacterVideo(
+                    getString(
+                        R.string.default_character_video
+                    )
+                )
+            )
         }
     }
 
