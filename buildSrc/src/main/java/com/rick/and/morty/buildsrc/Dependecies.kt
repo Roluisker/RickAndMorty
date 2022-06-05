@@ -8,7 +8,7 @@ object Libs {
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
 
         object Navigation {
-            val navVersion = "2.4.2"
+            private const val navVersion = "2.4.2"
             val fragmentKtx = "androidx.navigation:navigation-fragment-ktx:$navVersion"
             val uiKtx = "androidx.navigation:navigation-ui-ktx:$navVersion"
 
@@ -21,7 +21,7 @@ object Libs {
     }
 
     object Hilt {
-        val hiltVersion = "2.38.1"
+        private const val hiltVersion = "2.38.1"
         val android = "com.google.dagger:hilt-android:$hiltVersion"
         val androidCompiler = "com.google.dagger:hilt-android-compiler:$hiltVersion"
     }
@@ -47,21 +47,11 @@ object Libs {
     }
 
     object Exoplayer {
-        val media3Version = "1.0.0-alpha03"
+        private const val media3Version = "1.0.0-alpha03"
         val exoPlayer = "androidx.media3:media3-exoplayer:$media3Version"
         val media3Ui = "androidx.media3:media3-ui:$media3Version"
         val exoplayerDash = "androidx.media3:media3-exoplayer-dash:$media3Version"
     }
-
-    /*
-    implementation "androidx.media3:media3-exoplayer:1.0.0-alpha03"
-    implementation "androidx.media3:media3-ui:1.0.0-alpha03"
-    implementation "androidx.media3:media3-exoplayer-dash:1.0.0-alpha03"
-
-    testImplementation "io.mockk:mockk:1.12.2"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0"
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
-     */
 
     object Test {
         const val junit = "junit:junit:4.13.2"

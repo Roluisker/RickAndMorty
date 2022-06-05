@@ -1,6 +1,7 @@
 package com.rick.and.morty.character_video
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,6 +47,7 @@ class CharacterVideoFragment : BaseFragment() {
             CharacterVideoFragmentArgs.fromBundle(requireArguments()).characterName
     }
 
+    @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
     private fun initializePlayer() {
         player = ExoPlayer.Builder(requireContext())
             .build()
@@ -85,31 +87,35 @@ class CharacterVideoFragment : BaseFragment() {
         }
     }
 
+    @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
     override fun onStart() {
         super.onStart()
-        if (Util.SDK_INT > 23) {
+        if (Util.SDK_INT > Build.VERSION_CODES.M) {
             initializePlayer()
         }
     }
 
+    @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
     override fun onResume() {
         super.onResume()
         hideSystemUi()
-        if ((Util.SDK_INT <= 23 || player == null)) {
+        if ((Util.SDK_INT <= Build.VERSION_CODES.M || player == null)) {
             initializePlayer()
         }
     }
 
+    @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
     override fun onPause() {
         super.onPause()
-        if (Util.SDK_INT <= 23) {
+        if (Util.SDK_INT <= Build.VERSION_CODES.M) {
             releasePlayer()
         }
     }
 
+    @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
     override fun onStop() {
         super.onStop()
-        if (Util.SDK_INT > 23) {
+        if (Util.SDK_INT > Build.VERSION_CODES.M) {
             releasePlayer()
         }
     }
