@@ -7,7 +7,8 @@ import javax.inject.Inject
 class GetEpisodeUseCase @Inject constructor(private val episodesRepository: EpisodesRepository) {
 
     suspend operator fun invoke(episodesIds: String): Episode? {
-        return episodesRepository.getEpisodeFromApi(episodesIds.split("/")[5])
+        val episodeId = episodesIds.split("/")[5]
+        return episodesRepository.getEpisodeFromApi(episodeId)
     }
 
 }
