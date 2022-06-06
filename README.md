@@ -24,4 +24,5 @@ Network :
 
     * Save the responses with Room and load them when the app don't have internet
     * Define responses for specific exceptions in service classes
+    * Add the back button in views
 
