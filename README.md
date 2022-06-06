@@ -6,8 +6,8 @@
 	* Junit
 	* Material Design
 	* Android Jetpack
-    	* Exoplayer
-    	* MockK
+    * Exoplayer
+    * MockK
 	* Data Binding
 
 Network :
