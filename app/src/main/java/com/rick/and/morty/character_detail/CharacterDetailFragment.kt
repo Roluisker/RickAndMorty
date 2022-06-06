@@ -1,11 +1,6 @@
 package com.rick.and.morty.character_detail
 
-import android.net.ConnectivityManager
-import android.net.Network
-import android.net.NetworkCapabilities
-import android.net.NetworkRequest
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.rick.and.morty.R
 import com.rick.and.morty.character_detail.adapter.EpisodesAdapter
 import com.rick.and.morty.core.BaseFragment
+import com.rick.and.morty.core.ui.showSnackBar
 import com.rick.and.morty.databinding.FragmentDetailCharacterBinding
 import com.rick.and.morty.domain.model.character.CharacterInformation
 import com.squareup.picasso.Picasso
@@ -58,12 +55,6 @@ class CharacterDetailFragment : BaseFragment() {
             episodesAdapter.addEpisodes(it)
         }
 
-        characterDetailViewModel.getCharacter(
-            CharacterDetailFragmentArgs.fromBundle(
-                requireArguments()
-            ).characterId
-        )
-
         characterDetailViewModel.character.observe(lifecycleOwnerOwner()) {
             currentCharacter = it
             characterDetailViewModel.getEpisodes(currentCharacter.episodes)
@@ -96,9 +87,20 @@ class CharacterDetailFragment : BaseFragment() {
 
     override fun onNetworkChange(isNetworkAvailable: Boolean) {
         if (isNetworkAvailable) {
+            fragmentDetailCharacterBinding.characterVideoButton.visibility = View.VISIBLE
+
+            characterDetailViewModel.getCharacter(
+                CharacterDetailFragmentArgs.fromBundle(
+                    requireArguments()
+                ).characterId
+            )
 
         } else {
-
+            fragmentDetailCharacterBinding.characterVideoButton.visibility = View.GONE
+            showSnackBar(
+                fragmentDetailCharacterBinding.root, Snackbar.LENGTH_INDEFINITE,
+                10000, "Offline"
+            )
         }
     }
 

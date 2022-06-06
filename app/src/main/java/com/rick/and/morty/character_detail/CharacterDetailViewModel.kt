@@ -38,7 +38,7 @@ class CharacterDetailViewModel @Inject constructor(
             characterResult?.let {
                 character.postValue(it)
             } ?: run {
-                Log.d("Aloha", "null")
+                Log.d("CharacterDetailViewModel", "null")
             }
             isLoading.postValue(false)
         }
@@ -64,7 +64,7 @@ class CharacterDetailViewModel @Inject constructor(
                 currentEpisodes.add(it)
                 episodes.postValue(currentEpisodes)
             } ?: run {
-                Log.d("Aloha", "null")
+                Log.d("CharacterDetailViewModel", "null")
             }
             isLoading.postValue(false)
             isDataDisplayable.postValue(true)

@@ -10,8 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.rick.and.morty.R
 import com.rick.and.morty.core.BaseFragment
+import com.rick.and.morty.core.ui.showSnackBar
 import com.rick.and.morty.databinding.FragmentHomeBinding
 import com.rick.and.morty.domain.model.character.CharacterInformation
 import com.rick.and.morty.home.adapter.CharactersAdapter
@@ -23,6 +25,7 @@ class HomeFragment : BaseFragment(),
 
     private lateinit var fragmentHomeBinding: FragmentHomeBinding
     private lateinit var characterAdapter: CharactersAdapter
+    private var isNetworkAvailable = false
     private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
@@ -72,16 +75,22 @@ class HomeFragment : BaseFragment(),
     }
 
     override fun onNetworkChange(isNetworkAvailable: Boolean) {
-        if (isNetworkAvailable) {
+        this.isNetworkAvailable = isNetworkAvailable
+        if (this.isNetworkAvailable) {
             homeViewModel.getAllCharacters()
         } else {
-            Log.d("Aloha", "no internet")
+            showSnackBar(
+                fragmentHomeBinding.root, Snackbar.LENGTH_INDEFINITE,
+                10000, "Offline"
+            )
         }
     }
 
     override fun onTouchCharacter(character: CharacterInformation?) {
-        character?.let {
-            navController()?.navigate(HomeFragmentDirections.goToHomeCharacterDetail(it.id))
+        if (this.isNetworkAvailable) {
+            character?.let {
+                navController()?.navigate(HomeFragmentDirections.goToHomeCharacterDetail(it.id))
+            }
         }
     }
 

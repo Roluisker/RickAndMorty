@@ -9,16 +9,24 @@ import javax.inject.Inject
 class EpisodesService @Inject constructor(private val api: RickAndMortyApiClient) {
 
     suspend fun getEpisodes(episodesIds: String): EpisodesModel? {
-        return withContext(Dispatchers.IO) {
-            val response = api.getEpisodes(episodesIds)
-            response.body() ?: null
+        return try {
+            withContext(Dispatchers.IO) {
+                val response = api.getEpisodes(episodesIds)
+                response.body() ?: null
+            }
+        } catch (exception: Exception) {
+            null
         }
     }
 
     suspend fun getEpisode(episodeId: String): EpisodesItem? {
-        return withContext(Dispatchers.IO) {
-            val response = api.getEpisode(episodeId)
-            response.body() ?: null
+        return try {
+            withContext(Dispatchers.IO) {
+                val response = api.getEpisode(episodeId)
+                response.body() ?: null
+            }
+        } catch (exception: Exception) {
+            null
         }
     }
 

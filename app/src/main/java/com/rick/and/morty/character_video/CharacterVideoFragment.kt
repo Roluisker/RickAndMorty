@@ -15,8 +15,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.Util
 import androidx.media3.exoplayer.ExoPlayer
+import com.google.android.material.snackbar.Snackbar
 import com.rick.and.morty.R
 import com.rick.and.morty.core.BaseFragment
+import com.rick.and.morty.core.ui.showSnackBar
 import com.rick.and.morty.databinding.FragmentCharacterVideoBinding
 
 class CharacterVideoFragment : BaseFragment() {
@@ -126,7 +128,10 @@ class CharacterVideoFragment : BaseFragment() {
         if (isNetworkAvailable) {
 
         } else {
-
+            showSnackBar(
+                fragmentCharacterVideoBinding.root, Snackbar.LENGTH_INDEFINITE,
+                10000, "Offline"
+            )
         }
     }
 

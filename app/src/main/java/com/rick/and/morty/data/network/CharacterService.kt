@@ -9,16 +9,24 @@ import javax.inject.Inject
 class CharacterService @Inject constructor(private val api: RickAndMortyApiClient) {
 
     suspend fun getCharacters(page: Int): CharactersModel? {
-        return withContext(Dispatchers.IO) {
-            val response = api.getAllCharacters(page)
-            response.body() ?: null
+        return try {
+            withContext(Dispatchers.IO) {
+                val response = api.getAllCharacters(page)
+                response.body() ?: null
+            }
+        } catch (exception: Exception) {
+            null
         }
     }
 
     suspend fun getCharacter(characterId: Int): Result? {
-        return withContext(Dispatchers.IO) {
-            val response = api.getCharacter(characterId)
-            response.body() ?: null
+        return try {
+            withContext(Dispatchers.IO) {
+                val response = api.getCharacter(characterId)
+                response.body() ?: null
+            }
+        } catch (exception: Exception) {
+            null
         }
     }
 
