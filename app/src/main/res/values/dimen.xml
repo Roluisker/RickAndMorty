@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="character_list_item_margin">15dp</dimen>
+    <dimen name="character_list_item_image_height">130dp</dimen>
+    <dimen name="character_list_item_name_margin">5dp</dimen>
+    <dimen name="character_list_item_species_margin">5dp</dimen>
+    <dimen name="material_card_view_radius">5dp</dimen>
+    <dimen name="material_card_view_elevation">3dp</dimen>
+    <dimen name="episode_list_item_episode_name_margin">5dp</dimen>
+    <dimen name="app_bar_layout_height">50dp</dimen>
+    <dimen name="toolbar_height">50dp</dimen>
+    <dimen name="toolbar_elevation">8dp</dimen>
+    <dimen name="toolbar_padding_top">5dp</dimen>
+    <dimen name="toolbar_title_margin_end">7dp</dimen>
+    <dimen name="toolbar_title_padding_top">7dp</dimen>
+    <dimen name="toolbar_title_size">17sp</dimen>
+    <dimen name="progress_bar_height">10dp</dimen>
+    <dimen name="progress_bar_elevation">8dp</dimen>
+    <dimen name="progress_bar_padding_button">2.6dp</dimen>
+    <dimen name="material_card_view_detail_character_margin">15dp</dimen>
+    <dimen name="detail_character_image_height">250dp</dimen>
+    <dimen name="detail_character_margin">16dp</dimen>
+    <dimen name="detail_character_text_size">17sp</dimen>
+    <dimen name="detail_character_status_text_margin_top">5dp</dimen>
+    <dimen name="home_title_padding_top">7dp</dimen>
+    <dimen name="home_title_text_size">17sp</dimen>
+    <dimen name="home_character_margin_top">20dp</dimen>
+</resources>

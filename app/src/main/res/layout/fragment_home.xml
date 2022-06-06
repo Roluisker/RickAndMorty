@@ -20,15 +20,15 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="@dimen/app_bar_layout_height">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/home_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/toolbar_height"
                 android:background="@android:color/white"
-                android:elevation="8dp"
-                android:paddingTop="5dp"
+                android:elevation="@dimen/toolbar_elevation"
+                android:paddingTop="@dimen/toolbar_padding_top"
                 app:layout_anchor="@+id/appBarLayout"
                 app:layout_anchorGravity="center">
 
@@ -38,9 +38,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="left"
-                    android:paddingTop="7dp"
-                    android:text="Rick And Morty Characters"
-                    android:textSize="17sp" />
+                    android:paddingTop="@dimen/home_title_padding_top"
+                    android:text="@string/home_title"
+                    android:textSize="@dimen/home_title_text_size" />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -56,10 +56,10 @@
             <ProgressBar
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:elevation="8dp"
+                android:layout_height="@dimen/progress_bar_height"
+                android:elevation="@dimen/progress_bar_elevation"
                 android:indeterminate="true"
-                android:paddingBottom="2.6dp"
+                android:paddingBottom="@dimen/progress_bar_padding_button"
                 app:isLoaderVisible="@{isLoading}" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -70,7 +70,7 @@
                     android:id="@+id/characters"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="@dimen/home_character_margin_top"
                     app:layout_constrainedHeight="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

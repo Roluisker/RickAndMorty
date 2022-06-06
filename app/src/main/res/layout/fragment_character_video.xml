@@ -19,15 +19,15 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="@dimen/app_bar_layout_height">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/character_video_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/toolbar_height"
                 android:background="@android:color/white"
-                android:elevation="8dp"
-                android:paddingTop="5dp"
+                android:elevation="@dimen/toolbar_elevation"
+                android:paddingTop="@dimen/toolbar_padding_top"
                 app:layout_anchor="@+id/app_bar_layout"
                 app:layout_anchorGravity="center">
 
@@ -36,13 +36,13 @@
                     style="@style/TextAppearance.AppCompat.Title"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="7dp"
+                    android:layout_marginEnd="@dimen/toolbar_title_margin_end"
                     android:ellipsize="end"
                     android:gravity="left"
                     android:maxLines="1"
-                    android:paddingTop="7dp"
+                    android:paddingTop="@dimen/toolbar_title_padding_top"
                     android:text="@{characterName}"
-                    android:textSize="17sp"
+                    android:textSize="@dimen/toolbar_title_size"
                     tools:text="Rick Sanchez" />
 
             </androidx.appcompat.widget.Toolbar>
