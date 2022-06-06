@@ -3,7 +3,6 @@ package com.rick.and.morty.character_video
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +17,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import com.google.android.material.snackbar.Snackbar
 import com.rick.and.morty.R
 import com.rick.and.morty.core.BaseFragment
+import com.rick.and.morty.core.OFFLINE_MESSAGE_DURATION
 import com.rick.and.morty.core.ui.showSnackBar
 import com.rick.and.morty.databinding.FragmentCharacterVideoBinding
 
@@ -125,12 +125,10 @@ class CharacterVideoFragment : BaseFragment() {
     }
 
     override fun onNetworkChange(isNetworkAvailable: Boolean) {
-        if (isNetworkAvailable) {
-
-        } else {
+        if (!isNetworkAvailable) {
             showSnackBar(
                 fragmentCharacterVideoBinding.root, Snackbar.LENGTH_INDEFINITE,
-                10000, "Offline"
+                OFFLINE_MESSAGE_DURATION, getString(R.string.offline)
             )
         }
     }

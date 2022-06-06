@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.rick.and.morty.R
 import com.rick.and.morty.core.BaseFragment
+import com.rick.and.morty.core.OFFLINE_MESSAGE_DURATION
 import com.rick.and.morty.core.ui.showSnackBar
 import com.rick.and.morty.databinding.FragmentHomeBinding
 import com.rick.and.morty.domain.model.character.CharacterInformation
@@ -81,7 +82,7 @@ class HomeFragment : BaseFragment(),
         } else {
             showSnackBar(
                 fragmentHomeBinding.root, Snackbar.LENGTH_INDEFINITE,
-                10000, "Offline"
+                OFFLINE_MESSAGE_DURATION, getString(R.string.offline)
             )
         }
     }

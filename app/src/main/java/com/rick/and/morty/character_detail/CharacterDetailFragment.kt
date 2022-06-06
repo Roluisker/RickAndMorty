@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.rick.and.morty.R
 import com.rick.and.morty.character_detail.adapter.EpisodesAdapter
 import com.rick.and.morty.core.BaseFragment
+import com.rick.and.morty.core.OFFLINE_MESSAGE_DURATION
 import com.rick.and.morty.core.ui.showSnackBar
 import com.rick.and.morty.databinding.FragmentDetailCharacterBinding
 import com.rick.and.morty.domain.model.character.CharacterInformation
@@ -99,7 +100,7 @@ class CharacterDetailFragment : BaseFragment() {
             fragmentDetailCharacterBinding.characterVideoButton.visibility = View.GONE
             showSnackBar(
                 fragmentDetailCharacterBinding.root, Snackbar.LENGTH_INDEFINITE,
-                10000, "Offline"
+                OFFLINE_MESSAGE_DURATION, getString(R.string.offline)
             )
         }
     }
