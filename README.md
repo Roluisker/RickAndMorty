@@ -18,7 +18,7 @@ Network :
     * MVVM Architecture
     * View, ViewModel, UseCase, Repository, Service, ApiClient
     * Services classes in order to handle specific logic in repositories
-    * Observer pattern communitacion between view and view models
+    * Observer pattern communitacion between view and view model
 
 ## Pending
 
