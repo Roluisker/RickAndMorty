@@ -7,6 +7,7 @@
 	* Material Design
 	* Android Jetpack
     * Exoplayer
+    * MockK
 
 Network :
 
