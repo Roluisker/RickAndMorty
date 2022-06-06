@@ -29,5 +29,4 @@ class CharacterService @Inject constructor(private val api: RickAndMortyApiClien
             null
         }
     }
-
 }

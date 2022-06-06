@@ -29,5 +29,4 @@ class EpisodesService @Inject constructor(private val api: RickAndMortyApiClient
             null
         }
     }
-
 }

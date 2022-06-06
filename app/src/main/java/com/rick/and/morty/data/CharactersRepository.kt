@@ -23,5 +23,4 @@ class CharactersRepository @Inject constructor(private val api: CharacterService
         val character = api.getCharacter(characterId)
         return character?.toCharacter() ?: null
     }
-
 }
